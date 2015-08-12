@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{40468FAE-00F3-4389-912A-7F19D33F1832}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DB0266E4-E161-4E91-83C5-A380B4BB97CF} = {DB0266E4-E161-4E91-83C5-A380B4BB97CF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libtsv", "libtsv\libtsv.vcxproj", "{DB0266E4-E161-4E91-83C5-A380B4BB97CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40468FAE-00F3-4389-912A-7F19D33F1832}.Debug|Win32.ActiveCfg = Debug|Win32
+		{40468FAE-00F3-4389-912A-7F19D33F1832}.Debug|Win32.Build.0 = Debug|Win32
+		{40468FAE-00F3-4389-912A-7F19D33F1832}.Release|Win32.ActiveCfg = Release|Win32
+		{40468FAE-00F3-4389-912A-7F19D33F1832}.Release|Win32.Build.0 = Release|Win32
+		{DB0266E4-E161-4E91-83C5-A380B4BB97CF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DB0266E4-E161-4E91-83C5-A380B4BB97CF}.Debug|Win32.Build.0 = Debug|Win32
+		{DB0266E4-E161-4E91-83C5-A380B4BB97CF}.Release|Win32.ActiveCfg = Release|Win32
+		{DB0266E4-E161-4E91-83C5-A380B4BB97CF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
