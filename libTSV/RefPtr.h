@@ -27,22 +27,17 @@ public:
         acquire();
     }
 
-    RefPtr(T* p, RefCountedBase* ref)
-        : ptr_(p)
-        , refCount_(ref)
-    {
-        acquire();
-    }
-
     ~RefPtr()
     {
         release();
     }
 
-    void reset()
+    void reset(T* p = nullptr)
     {
         release();
-        ptr_ = nullptr;
+        ptr_ = p;
+        refCount_ = p ? RefCountedImpl<T>::create(p) : nullptr;
+        acquire();
     }
 
     COMMON_POINTER_IMPL(T, ptr_)
@@ -50,6 +45,12 @@ public:
 protected:
 
     template <class T> friend class WeakRef;
+
+    RefPtr(T* p, RefCountedBase* ref)
+        : ptr_(p)
+        , refCount_(ref)
+    {
+    }
 
     void acquire()
     {

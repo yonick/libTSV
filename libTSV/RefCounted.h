@@ -38,11 +38,17 @@ public:
     virtual void destroyObj() const {}
     virtual void destroyRef() const {}
 
-    int32_t hardRefs() const
+    int32_t tryHardAcquire() const
     {
-        detail::RCPair refs;
-        refs.a = AtomicLoad(&refCnt_.a);
-        return refs.pair.h;
+        detail::RCPair o, n;
+        do {
+            o.a = *static_cast<volatile atomic64_t*>(&refCnt_.a);
+            if (o.pair.h <= 0) {
+                break;
+            }
+            n.a = o.a + kHardRCAtom.a;
+        } while (!AtomicCompareAndSwap(&refCnt_.a, o.a, n.a));
+        return o.pair.h;
     }
 
     int32_t hardAcquire() const

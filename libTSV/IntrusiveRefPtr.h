@@ -26,10 +26,11 @@ public:
 
     COMMON_POINTER_IMPL(T, ptr_)
 
-    void reset()
+    void reset(RefCounted<T>* p = nullptr)
     {
         release();
-        ptr_ = nullptr;
+        ptr_ = p;
+        acquire();
     }
 
 protected:

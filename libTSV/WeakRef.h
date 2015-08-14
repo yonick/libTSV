@@ -30,7 +30,7 @@ public:
 
     RefPtr<T> lock()
     {
-        if (!hardRefs())
+        if (!tryAcquire())
         {
             return RefPtr<T>();
         }
@@ -49,9 +49,9 @@ protected:
         return refCount_->weakRelease();
     }
 
-    int32_t hardRefs()
+    int32_t tryAcquire()
     {
-        return refCount_->hardRefs();
+        return refCount_->tryHardAcquire();
     }
 
     T* ptr_;
