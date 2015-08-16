@@ -33,11 +33,9 @@ public:
     }
 
     SharedArray(Bytes* buf)
+        : buf_(buf)
     {
-        if (buf != buf_) {
-            buf_ = buf;
-            acquire();
-        }
+        acquire();
     }
 
     SharedArray(const SharedArray& that)

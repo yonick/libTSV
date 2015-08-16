@@ -7,6 +7,9 @@
 
 struct Void {};
 
+template <typename T> struct SharedBuf;
+extern SharedBuf<char> Null;
+
 template <typename T>
 struct SharedBuf {
 
@@ -57,6 +60,10 @@ struct SharedBuf {
 
     static inline SharedBuf* fromBytes(Bytes* p)
     {
+        if ((void*)p == Null.data) {
+            return static_cast<SharedBuf*>(
+                static_cast<void*>(&Null));
+        }
         return static_cast<SharedBuf*>(
             static_cast<void*>(
                 static_cast<unsigned char*>(static_cast<void*>(p))
@@ -128,7 +135,5 @@ struct SharedBuf {
     Bytes*     data;
     T          storage[1];
 };
-
-extern SharedBuf<char> Null;
 
 #endif // SHAREDBUF_H_INCLUDED
